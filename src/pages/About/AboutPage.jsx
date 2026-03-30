@@ -159,7 +159,7 @@ function TeamSection() {
   return (
     <section style={{ padding: "72px 0", background: "var(--bg)" }}>
       <div className="page-container">
-        <SectionHeader title="Meet the Team" sub="The people behind HomeQuest" />
+        <SectionHeader title="Meet the Team" sub="The people behind TOUCH TO INFINITY INFRA SOLUTIONS PRIVATE LIMITED" />
         <div className="team-grid">
           {ABOUT.team.map((member, i) => (
             <TeamCard key={i} member={member} delay={i + 1} />

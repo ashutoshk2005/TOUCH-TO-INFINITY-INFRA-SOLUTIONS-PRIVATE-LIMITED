@@ -19,8 +19,8 @@ const FOOTER_NAV = {
     { label: "Property Valuation", to: "#"                    },
   ],
   Legal: [
-    { label: "Terms & Conditions", to: "#" },
-    { label: "Privacy Policy",     to: "#" },
+    { label: "Terms & Conditions", to: "/terms-and-conditions" },
+    { label: "Privacy Policy",     to: "/privacy-policy" },
     { label: "Refund Policy",      to: "#" },
     { label: "Cookie Policy",      to: "#" },
   ],
@@ -68,7 +68,7 @@ export default function Footer() {
             {/* Brand column */}
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               <Link to="/" style={{ display: "inline-flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
-                <img src="src/data/logo.png" alt="Touch to Infinity" style={{ width: 100, height: 38, objectFit: 'contain', borderRadius: 9, background: '#fff', flexShrink: 0 }} />
+                <img src="src/images/logo.png" alt="Touch to Infinity" style={{ width: 100, height: 38, objectFit: 'contain', borderRadius: 9, background: '#fff', flexShrink: 0 }} />
                 <span style={{ fontFamily: "var(--font-display)", fontSize: 20, color: "#fff", fontWeight: 700 }}>
                   
                 </span>

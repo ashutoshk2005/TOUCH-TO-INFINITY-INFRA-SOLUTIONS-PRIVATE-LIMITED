@@ -22,7 +22,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div style={{ textAlign: "center", marginBottom: 28 }}>
           <Link to="/" style={{ display: "inline-block", textDecoration: "none" }}>
-            <img src="src/data/logo.png" alt="Touch to Infinity" style={{ width: 150, height: 64, objectFit: 'contain', marginBottom: 8, borderRadius: 12, background: '#fff' }} />
+            <img src="src/images/logo.png" alt="Touch to Infinity" style={{ width: 150, height: 64, objectFit: 'contain', marginBottom: 8, borderRadius: 12, background: '#fff' }} />
           </Link>
           <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, marginTop: 8 }}>India's most trusted property portal</p>
         </div>
@@ -47,7 +47,10 @@ export default function LoginPage() {
         </div>
 
         <p style={{ textAlign: "center", marginTop: 20, fontSize: 12, color: "rgba(255,255,255,0.45)" }}>
-          By continuing you agree to our <a href="#" style={{ color: "var(--blue)" }}>Terms</a> &amp; <a href="#" style={{ color: "var(--blue)" }}>Privacy Policy</a>
+          By continuing you agree to our{' '}
+          <Link to="/terms-and-conditions" style={{ color: "var(--blue)" }}>Terms</Link>
+          {' '} &amp; {' '}
+          <Link to="/privacy-policy" style={{ color: "var(--blue)" }}>Privacy Policy</Link>
         </p>
       </div>
     </div>

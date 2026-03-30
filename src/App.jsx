@@ -14,6 +14,8 @@ import ProfilePage        from "./pages/Profile/ProfilePage";
 import AboutPage          from "./pages/About/AboutPage";
 import { BlogListPage, BlogDetailPage } from "./pages/Blog/BlogPage";
 import ContactPage        from "./pages/Contact/ContactPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicy/PrivacyPolicyPage";
+import TermsAndConditionsPage from "./pages/TermsAndConditions/TermsAndConditionsPage";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -63,6 +65,8 @@ function AppRoutes() {
         <Route path="/contact"      element={<Layout><ContactPage /></Layout>} />
         <Route path="/blog"         element={<Layout><BlogListPage /></Layout>} />
         <Route path="/blog/:id"     element={<Layout><BlogDetailPage /></Layout>} />
+        <Route path="/privacy-policy" element={<Layout><PrivacyPolicyPage /></Layout>} />
+        <Route path="/terms-and-conditions" element={<Layout><TermsAndConditionsPage /></Layout>} />
         <Route path="*"             element={<NotFound />} />
       </Routes>
     </>

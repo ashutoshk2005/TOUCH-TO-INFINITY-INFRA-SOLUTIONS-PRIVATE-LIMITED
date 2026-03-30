@@ -1,4 +1,4 @@
-# 🏠 HomeQuest — Complete Real Estate Web App
+# 🏠 TOUCH TO INFINITY INFRA SOLUTIONS PRIVATE LIMITED — Complete Real Estate Web App
 
 A fully functional, production-ready React + Vite real estate portal.
 No backend required — everything runs in the browser via localStorage.
@@ -43,7 +43,7 @@ Edit it and every page updates automatically.
 ### Change site name, phone, email, address:
 ```js
 export const SITE = {
-  name:    "HomeQuest",          // ← change site name
+  name:    "TOUCH TO INFINITY INFRA SOLUTIONS PRIVATE LIMITED",          // ← change site name
   phone:   "+91 98765 43210",    // ← change phone
   email:   "hello@homequest.in", // ← change email
   address: "12th Floor, ...",    // ← change address

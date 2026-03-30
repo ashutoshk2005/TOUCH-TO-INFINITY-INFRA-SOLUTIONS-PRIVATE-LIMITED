@@ -9,7 +9,7 @@ export const SITE = {
   name:       "TOUCH TO INFINITY INFRA SOLUTIONS PRIVATE LIMITED",
   tagline:    "Find Your Perfect Property",
   description:"High-Impact Infrastructure & Real Estate Development Company",
-  logo:       "<img src='src/data/logo.png' alt='Touch to Infinity'>",                         // emoji OR swap with an <img> src
+  logo:       "<img src='src/images/logo.png' alt='Touch to Infinity'>",                         // emoji OR swap with an <img> src
   phone:      "98107 76604",
   email:      "t2infinity25@gmail.com",
   address:    "New Delhi, India",
@@ -56,21 +56,21 @@ export const STATS = [
 
 // ── PROPERTY CATEGORIES (Home page cards) ─────────────────────────────────────
 export const CATEGORIES = [
-  { icon: "🏢", title: "Buy Apartments", type: "Apartment", listing: "Buy",  prices: ["Below ₹60L", "₹60L–₹80L", "₹80L–₹1Cr"] },
-  { icon: "🏡", title: "Buy Villas",     type: "Villa",     listing: "Buy",  prices: ["₹60L–₹80L", "₹80L–₹1Cr", "₹1Cr–₹5Cr"] },
-  { icon: "🏰", title: "Luxury Homes",   type: "Apartment", listing: "Buy",  luxury: true, prices: ["₹1Cr–₹1.6Cr", "₹1.6Cr–₹5Cr", "Above ₹5Cr"] },
-  { icon: "🌳", title: "Buy Plots",      type: "Plot",      listing: "Buy",  prices: ["Below ₹60L", "₹60L–₹80L", "Above ₹80L"] },
-  { icon: "🔑", title: "Rent Flats",     type: "Apartment", listing: "Rent", prices: ["1 BHK", "2 BHK", "3 BHK"] },
+  { icon: "🏢", title: "Buy property in Dubai", type: "Buy property in Dubai", listing: "Buy",  prices: ["Below ₹60L", "₹60L–₹80L", "₹80L–₹1Cr"] },
+  { icon: "🏡", title: "Buy property in Delhi NCR",type: "Buy property in Delhi NCR",     listing: "Buy",  prices: ["₹60L–₹80L", "₹80L–₹1Cr", "₹1Cr–₹5Cr"] },
+  // { icon: "🏰", title: "Luxury Homes",   type: "Luxury Homes", listing: "Buy",  luxury: true, prices: ["₹1Cr–₹1.6Cr", "₹1.6Cr–₹5Cr", "Above ₹5Cr"] },
+  // { icon: "🌳", title: "Buy Plots",      type: "Buy Plots",      listing: "Buy",  prices: ["Below ₹60L", "₹60L–₹80L", "Above ₹80L"] },
+  // { icon: "🔑", title: "Rent Flats",     type: "Rent Flats", listing: "Rent", prices: ["1 BHK", "2 BHK", "3 BHK"] },
 ];
 
 // ── LOCALITIES (Home page chips) ─────────────────────────────────────────────
 export const LOCALITIES = [
-  { name: "Uttam Nagar", count: "20+ for Sale", city: "Delhi" },
-  { name: "Chhatarpur",  count: "10+ for Sale", city: "Delhi" },
-  { name: "L Zone",      count: "10+ for Sale", city: "Delhi" },
-  { name: "Shadipur",    count: "8+ for Sale",  city: "Delhi" },
-  { name: "Okhla",       count: "15+ for Sale", city: "Delhi" },
-  { name: "Dwarka",      count: "30+ for Sale", city: "Delhi" },
+  // { name: "Uttam Nagar", count: "20+ for Sale", city: "Delhi" },
+  // { name: "Chhatarpur",  count: "10+ for Sale", city: "Delhi" },
+  // { name: "L Zone",      count: "10+ for Sale", city: "Delhi" },
+  // { name: "Shadipur",    count: "8+ for Sale",  city: "Delhi" },
+  // { name: "Okhla",       count: "15+ for Sale", city: "Delhi" },
+  // { name: "Dwarka",      count: "30+ for Sale", city: "Delhi" },
 ];
 
 // ── APP PROMO (Home page banner) ──────────────────────────────────────────────
