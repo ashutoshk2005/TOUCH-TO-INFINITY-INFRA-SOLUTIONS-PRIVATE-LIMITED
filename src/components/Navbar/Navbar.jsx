@@ -64,7 +64,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" style={{ display:"flex", alignItems:"center", gap:8, textDecoration:"none", flexShrink:0, marginRight:4 }}>
-          <img src="src/images/logo.png" alt="Touch to Infinity" style={{ width: 70, height: 38, objectFit: 'contain', borderRadius: 9, background: '#fff', flexShrink: 0 }} />
+          <img src="/images/logo.png" alt="Touch to Infinity" style={{ width: 70, height: 38, objectFit: 'contain', borderRadius: 9, background: '#fff', flexShrink: 0 }} />
         </Link>
 
         {/* City picker — hidden on mobile */}

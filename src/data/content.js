@@ -9,7 +9,7 @@ export const SITE = {
   name:       "TOUCH TO INFINITY INFRA SOLUTIONS PRIVATE LIMITED",
   tagline:    "Find Your Perfect Property",
   description:"High-Impact Infrastructure & Real Estate Development Company",
-  logo:       "<img src='src/images/logo.png' alt='Touch to Infinity'>",                         // emoji OR swap with an <img> src
+  logo:       "<img src='/logo.png' alt='Touch to Infinity'>",                         // emoji OR swap with an <img> src
   phone:      "98107 76604",
   email:      "t2infinity25@gmail.com",
   address:    "New Delhi, India",
