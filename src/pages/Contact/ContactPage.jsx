@@ -103,15 +103,49 @@ function ContactForm() {
   const [status, setStatus]   = useState("idle"); // idle | loading | success | error
   const set = (k) => (v) => setForm(f => ({ ...f, [k]: v }));
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!form.name || !form.email || !form.message) return;
+  //   setStatus("loading");
+  //   await new Promise(r => setTimeout(r, 1000));
+  //   setStatus("success");
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
+
     setStatus("loading");
-    await new Promise(r => setTimeout(r, 1000));
-    setStatus("success");
+
+    const formData = new FormData(e.target);
+    formData.append("access_key", "d89c86b4-1f90-4775-9982-9a834641bf4a");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      console.log("Response:", data);
+
+      if (data.success) {
+        setStatus("success");
+        e.target.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
   };
 
   if (status === "success") return (
+
+
+
+
+
+
     <div style={{ background: "#fff", borderRadius: 16, border: "1px solid var(--border)", boxShadow: "var(--shadow)", padding: "48px 40px", textAlign: "center", marginBottom: 32 }}>
       <div style={{ fontSize: 64, marginBottom: 16 }}>🎉</div>
       <h2 style={{ fontFamily: "var(--font-display)", fontSize: 26, fontWeight: 700, marginBottom: 10 }}>Message Sent!</h2>
@@ -132,22 +166,27 @@ function ContactForm() {
 
       <form onSubmit={handleSubmit}>
         <TwoCol>
-          <Field label="Full Name *"    type="text"  placeholder="Rahul Sharma"        value={form.name}  onChange={set("name")} />
-          <Field label="Email Address *" type="email" placeholder="your@email.com"      value={form.email} onChange={set("email")} />
+          <Field name="name" label="Full Name *"    type="text"  placeholder="Rahul Sharma"        value={form.name}  onChange={set("name")} />
+          <Field name="email" label="Email Address *" type="email" placeholder="your@email.com"      value={form.email} onChange={set("email")} />
         </TwoCol>
         <TwoCol>
-          <Field label="Phone Number"   type="tel"   placeholder="+91 98765 43210"     value={form.phone} onChange={set("phone")} />
-          <SelectField label="Subject" value={form.subject} onChange={set("subject")}
+          <Field name="phone" label="Phone Number"   type="tel"   placeholder="+91 98765 43210"     value={form.phone} onChange={set("phone")} />
+          <SelectField name="subject" label="Subject" value={form.subject} onChange={set("subject")}
             options={["General Enquiry","Property Listing Issue","Partnership / Advertising","Press & Media","Careers","Technical Support"]} />
         </TwoCol>
         <div style={{ marginBottom: 20 }}>
           <label style={labelStyle}>Message *</label>
-          <textarea placeholder="Tell us how we can help you…" value={form.message} onChange={e => set("message")(e.target.value)} rows={5}
+          <textarea name="message" placeholder="Tell us how we can help you…" value={form.message} onChange={e => set("message")(e.target.value)} rows={5}
             onFocus={e => e.target.style.borderColor = "var(--blue)"}
             onBlur={e  => e.target.style.borderColor = "var(--border)"}
             style={{ width: "100%", border: "1.5px solid var(--border)", borderRadius: 9, padding: "12px 14px", fontSize: 14, outline: "none", resize: "vertical", lineHeight: 1.6, fontFamily: "var(--font-body)" }} />
         </div>
         <SubmitButton loading={status === "loading"} />
+        {status === "error" && (
+          <p style={{ color: "red", marginTop: 10 }}>
+            ❌ Something went wrong. Try again.
+          </p>
+        )}
       </form>
     </div>
   );
@@ -266,12 +305,12 @@ function TwoCol({ children }) {
   return <div className="two-col">{children}</div>;
 }
 
-function Field({ label, type, placeholder, value, onChange }) {
+function Field({ name, label, type, placeholder, value, onChange }) {
   const [focused, setFocused] = useState(false);
   return (
     <div style={{ marginBottom: 16 }}>
       <label style={labelStyle}>{label}</label>
-      <input type={type} placeholder={placeholder} value={value}
+      <input name={name} type={type} placeholder={placeholder} value={value}
         onChange={e => onChange(e.target.value)}
         onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
         style={{ width: "100%", border: `1.5px solid ${focused ? "var(--blue)" : "var(--border)"}`, borderRadius: 9, padding: "11px 14px", fontSize: 14, outline: "none", transition: "border 0.2s", fontFamily: "var(--font-body)" }} />
@@ -279,12 +318,12 @@ function Field({ label, type, placeholder, value, onChange }) {
   );
 }
 
-function SelectField({ label, value, onChange, options }) {
+function SelectField({ name, label, value, onChange, options }) {
   const [focused, setFocused] = useState(false);
   return (
     <div style={{ marginBottom: 16 }}>
       <label style={labelStyle}>{label}</label>
-      <select value={value} onChange={e => onChange(e.target.value)}
+      <select name={name} value={value} onChange={e => onChange(e.target.value)}
         onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
         style={{ width: "100%", border: `1.5px solid ${focused ? "var(--blue)" : "var(--border)"}`, borderRadius: 9, padding: "11px 14px", fontSize: 14, outline: "none", cursor: "pointer", background: "#fff", fontFamily: "var(--font-body)", transition: "border 0.2s" }}>
         {options.map(o => <option key={o} value={o}>{o}</option>)}
