@@ -16,8 +16,7 @@ export default function PropertyCard({ prop, delay = 1, compact = false }) {
   };
   const handleContact = (e) => {
     e.stopPropagation();
-    if (!user) { navigate("/login"); return; }
-    addNotification("📞 Contact request sent! Builder will call you shortly.", "success");
+    navigate("/contact");
   };
 
   return (

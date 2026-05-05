@@ -100,7 +100,7 @@ function ContactForm() {
   const [form, setForm] = useState({
     name: "", email: "", phone: "", subject: "General Enquiry", message: "",
   });
-  const [status, setStatus]   = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const set = (k) => (v) => setForm(f => ({ ...f, [k]: v }));
 
   // const handleSubmit = async (e) => {
@@ -116,12 +116,20 @@ function ContactForm() {
     setStatus("loading");
 
     const formData = new FormData(e.target);
-    formData.append("access_key", "d89c86b4-1f90-4775-9982-9a834641bf4a");
+    formData.append("access_key", "38ee0245-c079-405c-af35-6b7d15bc06eb");
+    formData.append("from_name", "Infinite Infra Solution Contact Form");
 
     try {
+      // const response = await fetch("https://api.web3forms.com/submit", {
+      //   method: "POST",
+      //   body: formData,
+      // });
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
+        headers: {
+          "Accept": "application/json"
+        }
       });
 
       const data = await response.json();
@@ -131,10 +139,11 @@ function ContactForm() {
         setStatus("success");
         e.target.reset();
       } else {
+        console.error("Form submission failed:", data);
         setStatus("error");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Network error:", error);
       setStatus("error");
     }
   };
@@ -164,21 +173,22 @@ function ContactForm() {
       <h2 style={{ fontFamily: "var(--font-display)", fontSize: 24, fontWeight: 700, marginBottom: 6 }}>Send Us a Message</h2>
       <p style={{ fontSize: 14, color: "var(--text-muted)", marginBottom: 28 }}>Fill in the form and we'll get back to you shortly.</p>
 
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}> */}
+      <form onSubmit={handleSubmit} noValidate>
         <TwoCol>
-          <Field name="name" label="Full Name *"    type="text"  placeholder="Rahul Sharma"        value={form.name}  onChange={set("name")} />
-          <Field name="email" label="Email Address *" type="email" placeholder="your@email.com"      value={form.email} onChange={set("email")} />
+          <Field name="name" label="Full Name *" type="text" placeholder="Your Name" value={form.name} onChange={set("name")} />
+          <Field name="email" label="Email Address *" type="email" placeholder="your@email.com" value={form.email} onChange={set("email")} />
         </TwoCol>
         <TwoCol>
-          <Field name="phone" label="Phone Number"   type="tel"   placeholder="+91 98765 43210"     value={form.phone} onChange={set("phone")} />
+          <Field name="phone" label="Phone Number" type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={set("phone")} />
           <SelectField name="subject" label="Subject" value={form.subject} onChange={set("subject")}
-            options={["General Enquiry","Property Listing Issue","Partnership / Advertising","Press & Media","Careers","Technical Support"]} />
+            options={["General Enquiry", "Property Listing Issue", "Partnership / Advertising", "Press & Media", "Careers", "Technical Support"]} />
         </TwoCol>
         <div style={{ marginBottom: 20 }}>
           <label style={labelStyle}>Message *</label>
           <textarea name="message" placeholder="Tell us how we can help you…" value={form.message} onChange={e => set("message")(e.target.value)} rows={5}
             onFocus={e => e.target.style.borderColor = "var(--blue)"}
-            onBlur={e  => e.target.style.borderColor = "var(--border)"}
+            onBlur={e => e.target.style.borderColor = "var(--border)"}
             style={{ width: "100%", border: "1.5px solid var(--border)", borderRadius: 9, padding: "12px 14px", fontSize: 14, outline: "none", resize: "vertical", lineHeight: 1.6, fontFamily: "var(--font-body)" }} />
         </div>
         <SubmitButton loading={status === "loading"} />
@@ -229,9 +239,9 @@ function QuickContact() {
       <h3 style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, marginBottom: 20 }}>Quick Contact</h3>
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         {[
-          { icon: "📞", label: "Call Us",       val: SITE.phone,   href: `tel:${SITE.phone}` },
-          { icon: "✉️", label: "Email Us",      val: SITE.email,   href: `mailto:${SITE.email}` },
-          { icon: "📍", label: "Headquarters",  val: SITE.address, href: SITE.mapEmbed },
+          { icon: "📞", label: "Call Us", val: SITE.phone, href: `tel:${SITE.phone}` },
+          { icon: "✉️", label: "Email Us", val: SITE.email, href: `mailto:${SITE.email}` },
+          { icon: "📍", label: "Headquarters", val: SITE.address, href: SITE.mapEmbed },
         ].map(({ icon, label, val, href }) => (
           <a key={label} href={href} target="_blank" rel="noreferrer"
             style={{ display: "flex", gap: 14, alignItems: "flex-start", textDecoration: "none", padding: "12px 14px", borderRadius: 10, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)", transition: "background 0.2s" }}
@@ -251,10 +261,10 @@ function QuickContact() {
         <div style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", fontWeight: 700, letterSpacing: "0.7px", textTransform: "uppercase", marginBottom: 12 }}>Follow Us</div>
         <div style={{ display: "flex", gap: 10 }}>
           {[
-            { icon: "f",  href: SITE.social.facebook,  label: "Facebook" },
-            { icon: "𝕏",  href: SITE.social.twitter,   label: "Twitter"  },
-            { icon: "in", href: SITE.social.linkedin,   label: "LinkedIn" },
-            { icon: "▶",  href: SITE.social.youtube,    label: "YouTube"  },
+            { icon: "f", href: SITE.social.facebook, label: "Facebook" },
+            { icon: "𝕏", href: SITE.social.twitter, label: "Twitter" },
+            { icon: "in", href: SITE.social.linkedin, label: "LinkedIn" },
+            { icon: "▶", href: SITE.social.youtube, label: "YouTube" },
           ].map(({ icon, href, label }) => (
             <SocialBtn key={label} icon={icon} href={href} />
           ))}
